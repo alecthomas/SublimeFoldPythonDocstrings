@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Fold Python Docstrings",
+        "command": "fold_python_docstrings"
+    }
+]
