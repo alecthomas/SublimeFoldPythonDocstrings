@@ -1,6 +1,10 @@
 [
-    {
-        "caption": "Fold Python Docstrings",
-        "command": "fold_python_docstrings"
-    }
+  {
+    "caption": "Python Docstrings: Fold",
+    "command": "fold_python_docstrings"
+  },
+  {
+    "caption": "Python Docstrings: Unfold",
+    "command": "unfold_python_docstrings"
+  }
 ]

@@ -19,9 +19,10 @@ class FoldFilePythonDocstrings(sublime_plugin.EventListener):
 
 
 class FoldPythonDocstringsCommand(sublime_plugin.TextCommand):
-    """This is a docstring.
-
-    moo bar
-    """
     def run(self, edit):
         fold_comments(self.view)
+
+
+class UnfoldPythonDocstringsCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        self.view.unfold(self.view.find_by_selector('string'))

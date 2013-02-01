@@ -1,0 +1,4 @@
+[
+  { "keys": ["super+shift+minus"], "command": "fold_python_docstrings" },
+  { "keys": ["super+shift+equals"], "command": "unfold_python_docstrings" }
+]
