@@ -9,7 +9,7 @@ def fold_comments(view):
             region = sublime.Region(lines[0].begin(), lines[-1].end())
             text = view.substr(region).strip()
             if text.startswith("'''") or text.startswith('"""'):
-                fold_region = sublime.Region(lines[0].end() - 1, lines[-1].end() - 3)
+                fold_region = sublime.Region(lines[0].end(), lines[-1].end() - 3)
                 view.fold(fold_region)
 
 
