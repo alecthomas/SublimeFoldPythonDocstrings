@@ -4,7 +4,6 @@ import sublime_plugin
 
 def fold_comments(view):
     for region in view.find_by_selector('string.quoted.double.block, string.quoted.single.block'):
-        print(view.substr(region))
         lines = view.lines(region)
         if len(lines) > 1:
             region = sublime.Region(lines[0].begin(), lines[-1].end())
