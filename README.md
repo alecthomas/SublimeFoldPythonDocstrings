@@ -10,6 +10,10 @@ Look like this:
 
 ![After folding](http://f.cl.ly/items/3O1r3h3g141j0q1T140r/Screen%20Shot%202013-04-16%20at%2011.02.13%20AM.png)
 
+### Installation
+
+Using [Package Control](https://sublime.wbond.net/installation), install the *"Fold Python Docstrings"* package.
+
 ### Key bindings
 
 There are two commands exposed: `fold_python_docstrings` and `unfold_python_docstrings`.
