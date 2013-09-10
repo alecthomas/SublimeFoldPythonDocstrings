@@ -22,6 +22,13 @@ On OSX these are bound to ⌘⇧- and ⌘⇧=, respectively.
 
 ### Configuration
 
-To disable folding on initial load add the following to `User/Preferences.sublime-settings`:
+The following settings can be changed in `User/Preferences.sublime-settings`:
 
-`"fold_python_docstrings_onload": false`
+**fold_python_docstrings_onload**
+
+Set to `false` to disable folding on initial load
+
+**fold_python_docstrings_number_of_lines**
+
+Set to this to an integer to fold the docstring to this number of lines
+
