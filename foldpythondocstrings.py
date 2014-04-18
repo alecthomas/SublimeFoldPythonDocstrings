@@ -3,13 +3,14 @@ import sublime_plugin
 
 
 def fold_comments(view):
+    number_lines_to_fold = view.settings().get("fold_python_docstrings_number_of_lines", 1)
     for region in view.find_by_selector('string.quoted.double.block, string.quoted.single.block'):
         lines = view.lines(region)
         if len(lines) > 1:
             region = sublime.Region(lines[0].begin(), lines[-1].end())
             text = view.substr(region).strip()
             if text.startswith("'''") or text.startswith('"""'):
-                fold_region = sublime.Region(lines[0].end(), lines[-1].end() - 3)
+                fold_region = sublime.Region(lines[number_lines_to_fold-1].end(), lines[-1].end() - 3)
                 view.fold(fold_region)
 
 
