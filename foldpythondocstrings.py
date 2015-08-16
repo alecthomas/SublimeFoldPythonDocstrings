@@ -1,10 +1,11 @@
 import sublime
 import sublime_plugin
 
+SELECTOR = 'string.quoted.double.block, string.quoted.single.block'
+
 
 def fold_comments(view):
-    # Selector moved out for readability
-    selectors = 'string.quoted.double.block, string.quoted.single.block'
+    # Settings
     number_lines_to_fold = view.settings().get(
         "fold_python_docstrings_number_of_lines", 1
     )
@@ -12,7 +13,7 @@ def fold_comments(view):
         "fold_python_docstrings_show_ending_quotes_on_separate_line", False
     )
 
-    for region in view.find_by_selector(selectors):
+    for region in view.find_by_selector(SELECTOR):
         lines = view.lines(region)
         if len(lines) <= 1:
             continue
@@ -58,4 +59,4 @@ class FoldPythonDocstringsCommand(sublime_plugin.TextCommand):
 
 class UnfoldPythonDocstringsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        self.view.unfold(self.view.find_by_selector('string'))
+        self.view.unfold(self.view.find_by_selector(SELECTOR))
