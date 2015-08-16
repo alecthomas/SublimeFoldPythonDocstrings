@@ -22,9 +22,15 @@ def fold_comments(view):
         if not text.startswith(("'''", '"""')):
             continue
 
-        # Moved out for readability
+        # **Edge Case**
+        # If we have a comma, parenthesis or spaces after the quotes
+        adjustment = 3
+        while text[-1] != text[1]:
+            adjustment += 1
+            text = text[:-1]
+
         a = lines[number_lines_to_fold - 1].end()
-        b = lines[-1].end() - 3
+        b = lines[-1].end() - adjustment
 
         # **Special Case**
         # When the doc-string ending quotes are on their own separate line,
@@ -33,7 +39,7 @@ def fold_comments(view):
             first_non_tab_or_space_char_at_end = text[:-3].rstrip(" \t")[-1]
             if first_non_tab_or_space_char_at_end == "\n":
                 # Move to before the new-line.
-                b -= (len(text) - text.rfind("\n") - 3)
+                b -= len(text) - text.rfind("\n") - 3
 
         fold_region = sublime.Region(a, b)
         view.fold(fold_region)
