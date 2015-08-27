@@ -9,9 +9,6 @@ def fold_comments(view):
     number_lines_to_fold = view.settings().get(
         "fold_python_docstrings_number_of_lines", 1
     )
-    show_ending_quotes_on_separate_line = view.settings().get(
-        "fold_python_docstrings_show_ending_quotes_on_separate_line", False
-    )
 
     for region in view.find_by_selector(SELECTOR):
         lines = view.lines(region)
@@ -32,15 +29,6 @@ def fold_comments(view):
 
         a = lines[number_lines_to_fold - 1].end()
         b = lines[-1].end() - adjustment
-
-        # **Special Case**
-        # When the doc-string ending quotes are on their own separate line,
-        # show it on a separate line.
-        if show_ending_quotes_on_separate_line:
-            first_non_tab_or_space_char_at_end = text[:-3].rstrip(" \t")[-1]
-            if first_non_tab_or_space_char_at_end == "\n":
-                # Move to before the new-line.
-                b -= len(text) - text.rfind("\n") - 3
 
         fold_region = sublime.Region(a, b)
         view.fold(fold_region)
