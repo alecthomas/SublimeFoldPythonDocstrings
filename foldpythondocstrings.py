@@ -4,7 +4,7 @@ import sublime_plugin
 
 def fold_comments(view):
     number_lines_to_fold = view.settings().get('fold_python_docstrings_number_of_lines', 1)
-    for region in view.find_by_selector('string.quoted.double.block, string.quoted.single.block'):
+    for region in view.find_by_selector('string.quoted.double.block, string.quoted.single.block, string.quoted.docstring'):
         lines = view.lines(region)
         if len(lines) <= 1:
             continue
@@ -12,7 +12,7 @@ def fold_comments(view):
         region = sublime.Region(lines[0].begin(), lines[-1].end())
         text = view.substr(region).strip()
 
-        if not (text.startswith("'''") or text.startswith('"""')):
+        if not (text.startswith("'''") or text.startswith('"""') or text.startswith('r"""')):
             continue
 
         # Handle docstrings with just quotes on the first line.
