@@ -58,5 +58,4 @@ class FoldPythonDocstringsCommand(sublime_plugin.TextCommand):
 class UnfoldPythonDocstringsCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
-        self.view.unfold(self.view.find_by_selector('string'))
-        self.view.unfold(self.view.find_by_selector('comment.block'))
+        self.view.unfold(self.view.find_by_selector('string', 'comment.block'))
