@@ -5,6 +5,7 @@ docstring_selectors = [
     'string.quoted.double.block',
     'string.quoted.single.block',
     'string.quoted.docstring',
+    'comment.block',
 ]
 
 docstring_startswith = [
@@ -58,3 +59,4 @@ class UnfoldPythonDocstringsCommand(sublime_plugin.TextCommand):
 
     def run(self, edit):
         self.view.unfold(self.view.find_by_selector('string'))
+        self.view.unfold(self.view.find_by_selector('comment.block'))
