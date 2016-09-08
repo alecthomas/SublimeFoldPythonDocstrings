@@ -1,0 +1,24 @@
+[
+  {
+    "keys": ["ctrl+shift+minus"],
+    "command": "fold_python_docstrings",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.python"
+      }
+    ]
+  },
+  {
+    "keys": ["ctrl+shift+equals"],
+    "command": "unfold_python_docstrings",
+    "context": [
+      {
+        "key": "selector",
+        "operator": "equal",
+        "operand": "source.python"
+      }
+    ]
+  }
+]
